@@ -1,11 +1,13 @@
 package com.github.fgsantana.citiesdapi.cities.service;
 
 import com.github.fgsantana.citiesdapi.cities.entities.City;
+import com.github.fgsantana.citiesdapi.cities.exception.CityNotFoundException;
 import com.github.fgsantana.citiesdapi.cities.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.swing.text.html.Option;
 import java.util.ArrayList;
@@ -22,25 +24,32 @@ public class CityService {
         return repo.findAll(page);
     }
 
-    public Optional<City> getCityById(Long id) {
-        return repo.findById(id);
+
+    public List<City> findByNameOrId(String city) throws CityNotFoundException {
+        List<City> list = new ArrayList<>();
+        if (isLongNumber(city)) {
+            Long id = Long.parseLong(city);
+            City fndCity = repo.findById(id).orElseThrow(() -> new CityNotFoundException());
+
+            list.add(fndCity);
+            return list;
+        }
+
+        list = repo.findCityByName(city);
+        if (list.isEmpty()) {
+            throw new CityNotFoundException();
+        }
+        return list;
+
+
     }
 
-    public List<City> findByNameOrId(String city) {
-
-
+    public boolean isLongNumber(String string) {
         try {
-            Long id = Long.parseLong(city);
-            List<City> list = new ArrayList<City>();
-            Optional<City> op = repo.findById(id);
-            if (op.isPresent()) {
-                list.add(op.get());
-            }
-            return list;
-
+            Long.parseLong(string);
+            return true;
         } catch (NumberFormatException e) {
-
-            return repo.findCityByName(city);
+            return false;
         }
     }
 }

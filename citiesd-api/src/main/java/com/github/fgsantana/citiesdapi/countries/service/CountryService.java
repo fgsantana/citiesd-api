@@ -26,7 +26,5 @@ public class CountryService {
         return this.repo.findById(id);
     }
 
-    public List<Country> getAllCountriesAsList() {
-        return this.repo.findAll();
-    }
+
 }

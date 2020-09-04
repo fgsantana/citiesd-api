@@ -27,4 +27,11 @@ public interface CityRepository extends JpaRepository<City, Long> {
             nativeQuery = true
     )
     List<City> findCityByName(String name);
+
+    @Query(
+            value = "SELECT * FROM cidade WHERE id=?1",
+            nativeQuery = true
+    )
+    List<City> findCityByIdList(Long id);
 }
+

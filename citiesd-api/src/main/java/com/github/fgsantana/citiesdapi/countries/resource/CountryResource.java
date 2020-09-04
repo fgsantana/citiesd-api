@@ -24,8 +24,7 @@ public class CountryResource {
     @Autowired
     CountryService service;
 
-    public CountryResource() {
-    }
+
 
     @GetMapping
     public Page<Country> getCountries(Pageable pag) {

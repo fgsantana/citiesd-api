@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class StateNotFoundException extends Exception {
-    public StateNotFoundException(){
+public class CountryNotFoundException extends Exception {
+    public CountryNotFoundException(){
         super("Country not found");
     }
 }

@@ -1,6 +1,7 @@
 package com.github.fgsantana.citiesdapi.cities.resource;
 
 import com.github.fgsantana.citiesdapi.cities.entities.City;
+import com.github.fgsantana.citiesdapi.cities.exception.CityNotFoundException;
 import com.github.fgsantana.citiesdapi.cities.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,8 +19,7 @@ public class CityResource {
     @Autowired
     CityService service;
 
-    public CityResource() {
-    }
+
 
     @GetMapping
     public Page<City> getCities(Pageable page) {
@@ -30,7 +30,7 @@ public class CityResource {
 
 
     @GetMapping("/{city}")
-    public List<City> getCityByNameOrId(@PathVariable("city") String city) {
-       return this.service.findByNameOrId(city);
+    public List<City> getCityByNameOrId(@PathVariable("city") String city) throws CityNotFoundException {
+        return service.findByNameOrId(city);
     }
 }

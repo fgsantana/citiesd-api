@@ -18,8 +18,7 @@ public class StateResource {
     @Autowired
     StateService service;
 
-    public StateResource() {
-    }
+
 
     @GetMapping
     public List<State> getStates() {
