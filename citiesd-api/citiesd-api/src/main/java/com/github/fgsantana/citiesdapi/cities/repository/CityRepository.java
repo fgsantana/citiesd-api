@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface CityRepository extends JpaRepository<City, Long> {
     @Query(
@@ -18,4 +21,10 @@ public interface CityRepository extends JpaRepository<City, Long> {
             nativeQuery = true
     )
     Double distanceByCube(final Double lat1, final Double lon1, final Double lat2, final Double lon2);
+
+    @Query(
+            value = "SELECT * FROM cidade WHERE nome=?1",
+            nativeQuery = true
+    )
+    List<City> findCityByName(String name);
 }

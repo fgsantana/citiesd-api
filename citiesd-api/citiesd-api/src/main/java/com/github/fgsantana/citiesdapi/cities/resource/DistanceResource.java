@@ -23,4 +23,6 @@ public class DistanceResource {
     public Distancia getDistanceByIds(@RequestParam Long cidade1, @RequestParam Long cidade2) {
         return this.service.distanceByCubeInMeters(cidade1, cidade2);
     }
+
+
 }
