@@ -35,6 +35,6 @@ public class CountryResource {
     @GetMapping({"/{id}"})
     public ResponseEntity getCountry(@PathVariable("id") Long id) {
         Optional<Country> op = this.service.getCountryById(id);
-        return op.isPresent() ? ResponseEntity.ok().body((Country)op.get()) : ResponseEntity.notFound().build();
+        return op.isPresent() ? ResponseEntity.ok().body(op.get()) : ResponseEntity.notFound().build();
     }
 }

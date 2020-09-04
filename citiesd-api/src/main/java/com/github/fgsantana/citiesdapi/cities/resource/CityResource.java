@@ -27,17 +27,10 @@ public class CityResource {
     }
 
 
- /*
-    @GetMapping({"/{id}"})
-    public ResponseEntity getCity(@PathVariable("id") Long id) {
-        Optional<City> op = this.service.getCityById(id);
-        return op.isPresent() ? ResponseEntity.ok().body(op.get()) : ResponseEntity.notFound().build();
-    }
-    */
 
-    @GetMapping({"/{city}"})
+
+    @GetMapping("/{city}")
     public List<City> getCityByNameOrId(@PathVariable("city") String city) {
        return this.service.findByNameOrId(city);
-//        return op.isPresent() ? ResponseEntity.ok().body(op.get()) : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não achado");
     }
 }

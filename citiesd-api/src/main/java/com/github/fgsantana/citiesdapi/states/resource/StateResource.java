@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.github.fgsantana.citiesdapi.states.entities.State;
+import com.github.fgsantana.citiesdapi.states.exception.StateNotFoundException;
 import com.github.fgsantana.citiesdapi.states.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +27,8 @@ public class StateResource {
     }
 
     @GetMapping({"/{id}"})
-    public ResponseEntity getState(@PathVariable("id") Long id) {
-        Optional<State> op = this.service.getStateById(id);
-        return op.isPresent() ? ResponseEntity.ok().body((State)op.get()) : ResponseEntity.notFound().build();
+    public State getState(@PathVariable("id") Long id) throws StateNotFoundException {
+
+        return service.getStateById(id);
     }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.github.fgsantana.citiesdapi.states.entities.State;
+import com.github.fgsantana.citiesdapi.states.exception.StateNotFoundException;
 import com.github.fgsantana.citiesdapi.states.repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,8 @@ public class StateService {
         return this.repo.findAll();
     }
 
-    public Optional<State> getStateById(Long id) {
-        return this.repo.findById(id);
+    public State getStateById(Long id) throws StateNotFoundException {
+        State state = repo.findById(id).orElseThrow(() -> new StateNotFoundException());
+        return state;
     }
 }
