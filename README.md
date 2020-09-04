@@ -7,6 +7,7 @@
 - Spring Data JPA 
 - PostgreSQL
 - Gradle 
+- Heroku
 
 
 >Os endpoints da API podem ser acessadas em
