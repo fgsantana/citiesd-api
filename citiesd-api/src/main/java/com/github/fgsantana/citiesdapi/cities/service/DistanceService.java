@@ -5,11 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.fgsantana.citiesdapi.cities.entities.City;
-import com.github.fgsantana.citiesdapi.cities.entities.Distancia;
+import com.github.fgsantana.citiesdapi.cities.dto.Distancia;
 import com.github.fgsantana.citiesdapi.cities.exception.InvalidParamException;
 import com.github.fgsantana.citiesdapi.cities.repository.CityRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
@@ -18,7 +16,6 @@ import org.springframework.stereotype.Service;
 public class DistanceService {
     @Autowired
     CityRepository repo;
-    private Distancia dis = new Distancia();
 
 
     /*public Double distanceByPointsInMiles(final String city1, final String city2) {
@@ -51,10 +48,9 @@ public class DistanceService {
         Point p1 = (cities.get(0)).getLocation();
         Point p2 = (cities.get(1)).getLocation();
         String dist = String.format("%.3f", (repo.distanceByCube(p1.getX(), p1.getY(), p2.getX(), p2.getY())/1000));
-        Double d = Double.parseDouble(dist.replace(",", "."));
-        this.dis.setDistancia(d);
-        this.dis.setUnidade("KM");
-        return this.dis;
+        Double distance = Double.parseDouble(dist.replace(",", "."));
+
+        return new Distancia(distance,"KM");
     }
 
     public Distancia distanceByCubeInMeterByName(String cityX, String cityY){
@@ -62,9 +58,8 @@ public class DistanceService {
         Point p1 = (cities.get(0)).getLocation();
         Point p2 = (cities.get(1)).getLocation();
         String dist = String.format("%.3f",(this.repo.distanceByCube(p1.getX(), p1.getY(), p2.getX(), p2.getY())/1000));
-        Double d = Double.parseDouble(dist.replace(",","."));
-        this.dis.setDistancia(d);
-        this.dis.setUnidade("KM");
-        return this.dis;
+        Double distance = Double.parseDouble(dist.replace(",","."));
+
+        return new Distancia(distance,"KM");
     }
 }

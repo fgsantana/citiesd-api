@@ -2,7 +2,7 @@ package com.github.fgsantana.citiesdapi.cities.resource;
 
 
 
-import com.github.fgsantana.citiesdapi.cities.entities.Distancia;
+import com.github.fgsantana.citiesdapi.cities.dto.Distancia;
 import com.github.fgsantana.citiesdapi.cities.exception.InvalidParamException;
 import com.github.fgsantana.citiesdapi.cities.service.DistanceService;
 import org.springframework.beans.factory.annotation.Autowired;

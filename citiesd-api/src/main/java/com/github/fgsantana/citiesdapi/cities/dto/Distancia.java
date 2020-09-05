@@ -1,10 +1,12 @@
-package com.github.fgsantana.citiesdapi.cities.entities;
+package com.github.fgsantana.citiesdapi.cities.dto;
 
 public class Distancia {
     private Double distancia;
     private String unidade;
 
-    public Distancia() {
+    public Distancia(Double distancia, String unidade) {
+        this.distancia = distancia;
+        this.unidade = unidade;
     }
 
     public Double getDistancia() {
