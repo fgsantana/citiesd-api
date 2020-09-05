@@ -24,7 +24,7 @@ public class CityResource {
 
     @GetMapping
     public Page<City> getCities(Pageable page) {
-        return this.service.findAllCities(page);
+        return this.service.getCities(page);
     }
 
 

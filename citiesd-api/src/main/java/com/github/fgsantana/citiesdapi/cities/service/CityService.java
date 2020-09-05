@@ -20,7 +20,7 @@ public class CityService {
     @Autowired
     CityRepository repo;
 
-    public Page<City> findAllCities(Pageable page) {
+    public Page<City> getCities(Pageable page) {
         return repo.findAll(page);
     }
 

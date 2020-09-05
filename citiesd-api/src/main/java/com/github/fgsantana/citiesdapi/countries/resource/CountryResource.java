@@ -3,6 +3,7 @@
 package com.github.fgsantana.citiesdapi.countries.resource;
 
 import com.github.fgsantana.citiesdapi.countries.entities.Country;
+import com.github.fgsantana.citiesdapi.countries.exception.CountryNotFoundException;
 import com.github.fgsantana.citiesdapi.countries.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,12 +27,11 @@ public class CountryResource {
 
     @GetMapping
     public Page<Country> getCountries(Pageable pag) {
-        return this.service.getAllCountries(pag);
+        return this.service.getCountries(pag);
     }
 
-    @GetMapping({"/{id}"})
-    public ResponseEntity getCountry(@PathVariable("id") Long id) {
-        Optional<Country> op = this.service.getCountryById(id);
-        return op.isPresent() ? ResponseEntity.ok().body((Country)op.get()) : ResponseEntity.notFound().build();
+    @GetMapping("/{country}")
+    public Country getByNameOrId(@PathVariable("country") String country) throws CountryNotFoundException {
+        return service.getByNameOrId(country);
     }
 }
