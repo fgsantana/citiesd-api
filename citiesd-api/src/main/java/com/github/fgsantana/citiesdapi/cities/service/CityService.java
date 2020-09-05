@@ -20,12 +20,12 @@ public class CityService {
     @Autowired
     CityRepository repo;
 
-    public Page<City> getAllCities(Pageable page) {
+    public Page<City> findAllCities(Pageable page) {
         return repo.findAll(page);
     }
 
 
-    public List<City> findByNameOrId(String city) throws CityNotFoundException {
+    public List<City> getByNameOrId(String city) throws CityNotFoundException {
         List<City> list = new ArrayList<>();
         if (isLongNumber(city)) {
             Long id = Long.parseLong(city);
@@ -35,7 +35,7 @@ public class CityService {
             return list;
         }
 
-        list = repo.findCityByName(city);
+        list = repo.findByName(city);
         if (list.isEmpty()) {
             throw new CityNotFoundException();
         }

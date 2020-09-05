@@ -20,8 +20,7 @@ public class DistanceService {
     private Distancia dis = new Distancia();
     Logger log = LoggerFactory.getLogger(DistanceService.class);
 
-    public DistanceService() {
-    }
+
 
     public Double distanceByPointsInMiles(final Long city1, final Long city2) {
         this.log.info("nativePostgresInMiles({}, {})", city1, city2);

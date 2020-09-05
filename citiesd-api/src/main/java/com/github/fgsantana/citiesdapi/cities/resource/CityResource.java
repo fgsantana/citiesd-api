@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.NonUniqueResultException;
 import java.util.List;
 
 @RestController
@@ -23,14 +24,14 @@ public class CityResource {
 
     @GetMapping
     public Page<City> getCities(Pageable page) {
-        return this.service.getAllCities(page);
+        return this.service.findAllCities(page);
     }
 
 
 
 
     @GetMapping("/{city}")
-    public List<City> getCityByNameOrId(@PathVariable("city") String city) throws CityNotFoundException {
-        return service.findByNameOrId(city);
+    public List<City> getCity(@PathVariable("city") String city) throws CityNotFoundException, NonUniqueResultException {
+        return service.getByNameOrId(city);
     }
 }

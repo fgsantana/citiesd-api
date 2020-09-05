@@ -22,12 +22,12 @@ public class StateResource {
 
     @GetMapping
     public List<State> getStates() {
-        return this.service.getAllStates();
+        return this.service.getStates();
     }
 
-    @GetMapping({"/{id}"})
-    public State getState(@PathVariable("id") Long id) throws StateNotFoundException {
+    @GetMapping("/{state}")
+    public State getState(@PathVariable("state") String state) throws StateNotFoundException {
 
-        return service.getStateById(id);
+        return service.getByNameOrId(state);
     }
 }
