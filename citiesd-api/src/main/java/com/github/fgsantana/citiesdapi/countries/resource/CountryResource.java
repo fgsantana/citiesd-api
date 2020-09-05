@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping({"api/countries"})
+@RequestMapping("api/v1/countries")
 public class CountryResource {
     @Autowired
     CountryService service;
