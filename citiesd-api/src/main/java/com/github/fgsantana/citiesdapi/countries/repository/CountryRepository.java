@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
     @Query(
-            value = "SELECT * FROM pais WHERE nome=?1 OR nome_pt=?1",
+            value = "SELECT * FROM pais WHERE nome ILIKE ?1 OR nome_pt ILIKE ?1",
             nativeQuery = true
     )
     Optional<Country> findByName(String name);

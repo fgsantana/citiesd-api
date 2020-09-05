@@ -21,7 +21,7 @@ public class DistanceResource {
 
 
 @GetMapping
-public Distancia getDistance( @RequestParam String by , @RequestParam String cityX, @RequestParam String cityY) throws InvalidParamException {
+public Distancia getDistance( @RequestParam("by") String by , @RequestParam("cityX") String cityX, @RequestParam("cityY") String cityY) throws InvalidParamException {
     return this.service.distanceByCubeInMeters(by,cityX, cityY);
 }
 

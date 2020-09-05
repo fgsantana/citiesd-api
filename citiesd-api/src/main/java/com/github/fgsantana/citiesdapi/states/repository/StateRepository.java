@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface StateRepository extends JpaRepository<State, Long> {
     @Query(
-            value = "SELECT * FROM estado WHERE nome=?1",
+            value = "SELECT * FROM estado WHERE nome ILIKE ?1",
             nativeQuery = true
     )
     Optional<State> findByName(String name);

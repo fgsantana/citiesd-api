@@ -7,18 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.NumberUtils;
 import org.springframework.web.client.HttpClientErrorException;
 
 import javax.swing.text.html.Option;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class CityService {
     @Autowired
     CityRepository repo;
+    List<City> list = new ArrayList<City>();
 
     public Page<City> getCities(Pageable page) {
         return repo.findAll(page);
@@ -26,21 +26,35 @@ public class CityService {
 
 
     public List<City> getByNameOrId(String city) throws CityNotFoundException {
-        List<City> list = new ArrayList<>();
+
         if (isLongNumber(city)) {
             Long id = Long.parseLong(city);
-            City fndCity = repo.findById(id).orElseThrow(() -> new CityNotFoundException());
-
-            list.add(fndCity);
-            return list;
+            return getById(id);
+        } else {
+            return getByName(city);
         }
 
-        list = repo.findByName(city);
+
+    }
+
+
+
+
+    public List<City> getById(Long id) throws CityNotFoundException {
+
+        City fndCity = repo.findById(id).orElseThrow(() -> new CityNotFoundException());
+
+        return Collections.singletonList(fndCity);
+    }
+
+
+
+    public List<City> getByName(String name) throws CityNotFoundException {
+        list = repo.findByName(name);
         if (list.isEmpty()) {
             throw new CityNotFoundException();
         }
         return list;
-
 
     }
 
