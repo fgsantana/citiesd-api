@@ -3,6 +3,7 @@ package com.github.fgsantana.citiesdapi.cities.resource;
 
 
 import com.github.fgsantana.citiesdapi.cities.dto.Distancia;
+import com.github.fgsantana.citiesdapi.cities.exception.CityNotFoundException;
 import com.github.fgsantana.citiesdapi.cities.exception.InvalidParamException;
 import com.github.fgsantana.citiesdapi.cities.service.DistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class DistanceResource {
 
 
 @GetMapping
-public Distancia getDistance( @RequestParam("by") String by , @RequestParam("cityX") String cityX, @RequestParam("cityY") String cityY) throws InvalidParamException {
+public Distancia getDistance( @RequestParam("by") String by , @RequestParam("cityX") String cityX, @RequestParam("cityY") String cityY) throws InvalidParamException, CityNotFoundException {
     return this.service.distanceByCubeInMeters(by,cityX, cityY);
 }
 
