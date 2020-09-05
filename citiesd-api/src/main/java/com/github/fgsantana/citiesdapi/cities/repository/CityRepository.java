@@ -17,6 +17,19 @@ public interface CityRepository extends JpaRepository<City, Long> {
     Double distanceByPoints(final Long cityId1, final Long cityId2);
 
     @Query(
+            value = "SELECT * FROM cidade WHERE nome=?1 OR nome=?2",
+            nativeQuery = true
+    )
+    List<City> findTwoCities(String city1, String city2);
+
+
+    @Query(
+            value = "SELECT ((SELECT lat_lon FROM cidade WHERE nome=?1) <@> (SELECT lat_lon FROM cidade WHERE nome=?2)) as distance",
+            nativeQuery = true
+    )
+    Double distanceByPoints(final String cityXName, final String cityYName);
+
+    @Query(
             value = "SELECT earth_distance(ll_to_earth(?1,?2), ll_to_earth(?3,?4)) as distance",
             nativeQuery = true
     )

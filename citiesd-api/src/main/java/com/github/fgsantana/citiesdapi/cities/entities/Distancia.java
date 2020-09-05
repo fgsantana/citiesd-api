@@ -16,7 +16,7 @@ public class Distancia {
     }
 
     public String getUnidade() {
-        return this.unidade;
+        return unidade;
     }
 
     public void setUnidade(String unidade) {
