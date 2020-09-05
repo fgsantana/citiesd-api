@@ -7,12 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.util.NumberUtils;
-import org.springframework.web.client.HttpClientErrorException;
 
-import javax.swing.text.html.Option;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class CityService {
@@ -38,15 +34,12 @@ public class CityService {
     }
 
 
-
-
     public List<City> getById(Long id) throws CityNotFoundException {
 
         City fndCity = repo.findById(id).orElseThrow(() -> new CityNotFoundException());
 
         return Collections.singletonList(fndCity);
     }
-
 
 
     public List<City> getByName(String name) throws CityNotFoundException {

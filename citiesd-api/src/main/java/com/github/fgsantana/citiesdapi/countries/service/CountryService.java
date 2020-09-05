@@ -1,7 +1,6 @@
 package com.github.fgsantana.citiesdapi.countries.service;
 
 
-
 import com.github.fgsantana.citiesdapi.countries.entities.Country;
 import com.github.fgsantana.citiesdapi.countries.exception.CountryNotFoundException;
 import com.github.fgsantana.citiesdapi.countries.repository.CountryRepository;
@@ -30,7 +29,7 @@ public class CountryService {
             return repo.findById(id).orElseThrow(() -> new CountryNotFoundException());
         }
 
-        return  repo.findByName(country).orElseThrow(() -> new CountryNotFoundException());
+        return repo.findByName(country).orElseThrow(() -> new CountryNotFoundException());
 
 
     }

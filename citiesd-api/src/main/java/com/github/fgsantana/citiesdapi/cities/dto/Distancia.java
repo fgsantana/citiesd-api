@@ -6,7 +6,6 @@ public class Distancia {
     private String unidade;
 
 
-
     public Distancia(String cityX, String cityY, Double distancia, String unidade) {
         this.message = "Distância entre " + cityX + " e " + cityY;
         this.distancia = distancia;

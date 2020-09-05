@@ -1,18 +1,17 @@
 package com.github.fgsantana.citiesdapi.states.service;
 
-import java.util.List;
-
 import com.github.fgsantana.citiesdapi.states.entities.State;
 import com.github.fgsantana.citiesdapi.states.exception.StateNotFoundException;
 import com.github.fgsantana.citiesdapi.states.repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StateService {
     @Autowired
     StateRepository repo;
-
 
 
     public List<State> getStates() {
@@ -28,7 +27,7 @@ public class StateService {
         }
 
 
-        return  repo.findByName(state).orElseThrow(() -> new StateNotFoundException());
+        return repo.findByName(state).orElseThrow(() -> new StateNotFoundException());
 
 
     }

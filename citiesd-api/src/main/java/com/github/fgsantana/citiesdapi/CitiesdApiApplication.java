@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class CitiesdApiApplication {
 
 
-	public static void main(String[] args) {
-		SpringApplication.run(CitiesdApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CitiesdApiApplication.class, args);
+    }
 
-	@GetMapping
-	public Message start(){
-		return new Message();
-	}
+    @GetMapping
+    public Message start() {
+        return new Message();
+    }
 
 }

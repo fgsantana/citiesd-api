@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class InvalidParamException extends Exception {
-    public InvalidParamException(){
+    public InvalidParamException() {
         super("'by' param must be 'id' or 'name'");
     }
 }

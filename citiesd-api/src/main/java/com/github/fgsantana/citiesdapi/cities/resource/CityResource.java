@@ -17,17 +17,14 @@ public class CityResource {
     CityService service;
 
 
-
     @GetMapping
     public Page<City> getCities(Pageable page) {
         return this.service.getCities(page);
     }
 
 
-
-
     @GetMapping("/{city}")
-    public List<City> getCity(@PathVariable("city") String city) throws CityNotFoundException{
+    public List<City> getCity(@PathVariable("city") String city) throws CityNotFoundException {
         return service.getByNameOrId(city);
     }
 }

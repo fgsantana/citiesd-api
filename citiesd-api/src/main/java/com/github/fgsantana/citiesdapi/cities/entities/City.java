@@ -6,19 +6,14 @@
 package com.github.fgsantana.citiesdapi.cities.entities;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.github.fgsantana.citiesdapi.cities.types.PointType;
 import com.github.fgsantana.citiesdapi.states.entities.State;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 import org.springframework.data.geo.Point;
+
+import javax.persistence.*;
 
 @Entity
 @Table(

@@ -1,7 +1,6 @@
 package com.github.fgsantana.citiesdapi.cities.resource;
 
 
-
 import com.github.fgsantana.citiesdapi.cities.dto.Distancia;
 import com.github.fgsantana.citiesdapi.cities.exception.CityNotFoundException;
 import com.github.fgsantana.citiesdapi.cities.exception.InvalidParamException;
@@ -19,14 +18,10 @@ public class DistanceResource {
     DistanceService service;
 
 
-
-
-@GetMapping
-public Distancia getDistance( @RequestParam("by") String by , @RequestParam("cityX") String cityX, @RequestParam("cityY") String cityY) throws InvalidParamException, CityNotFoundException {
-    return this.service.distanceByCubeInMeters(by,cityX, cityY);
-}
-
-
+    @GetMapping
+    public Distancia getDistance(@RequestParam("by") String by, @RequestParam("cityX") String cityX, @RequestParam("cityY") String cityY) throws InvalidParamException, CityNotFoundException {
+        return this.service.distanceByCubeInMeters(by, cityX, cityY);
+    }
 
 
 }
