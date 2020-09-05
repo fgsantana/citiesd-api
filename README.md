@@ -68,7 +68,7 @@ __Um exemplo de uma requisição solicitando outra página é mostrado__ [aqui](
 
 >Para se obter a distância entre as duas cidades do Brasil, deve-se enviar uma requisição para 
 
-[/distances](https://citiesd-api.herokuapp.com/api/v1/distances)
+/distances
 
 >E enviar como params:
 
